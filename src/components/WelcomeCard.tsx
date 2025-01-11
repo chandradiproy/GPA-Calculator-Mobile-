@@ -84,7 +84,7 @@ const WelcomeCard = () => {
         <Text
           style={[
             s`text-4xl mt-2`,
-            { color: isDark ? 'rgb(230, 10, 21)' : 'rgb(197, 16, 25)' },
+            { color: isDark ? '#EAB308' : 'rgb(197, 16, 25)' },
             {fontFamily: 'Quicksand-SemiBold'},
           ]}
         >

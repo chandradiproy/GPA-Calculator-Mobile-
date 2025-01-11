@@ -8,6 +8,7 @@ import {
   Touchable,
   TouchableOpacity,
   Linking,
+  Image,
 } from 'react-native';
 import {s} from 'react-native-wind';
 import useStore from '../store/resultStore';
@@ -32,20 +33,24 @@ function Navbar({propStyle}) {
         propStyle,
       ]}>
       <View style={s`h-full flex-row pl-3 items-center  w-24`}>
-        <Text>
+        {/* <Text>
           <Calculator color={isDark ? 'white' : 'black'} size={30} />
-        </Text>
+        </Text> */}
+        <Image
+          source={require('../../assets/logos/logo.png')}
+          style={[s`h-full flex-row  items-center  w-8 h-8 rounded-md`, isDark ? s`bg-none` : s`bg-gray-900`]}
+          />
       </View>
       <View style={[styles.navSecondPart]}>
         <TouchableOpacity onPress={handleHomePress}>
           <Text>
-            <Home color={isDark ? 'white' : 'black'} size={30} />
+            <Home color={isDark ? 'white' : 'black'} size={29} />
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => openLink('https://ecm.smtech.in/ecm/login.aspx')}>
           <Text>
-            <School color={isDark ? 'white' : 'black'} size={30} />
+            <School color={isDark ? 'white' : 'black'} size={29} />
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -53,7 +58,7 @@ function Navbar({propStyle}) {
             openLink('https://www.linkedin.com/in/chandradiproy/')
           }>
           <Text>
-            <InfoIcon color={isDark ? 'white' : 'black'} size={30} />
+            <InfoIcon color={isDark ? 'white' : 'black'} size={29} />
           </Text>
         </TouchableOpacity>
       </View>

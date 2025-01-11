@@ -16,7 +16,7 @@ export default function App() {
   const isDark = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaView style={s`${isDark ? 'bg-gray-700' : 'bg-gray-100'} flex-1`}>
+    <SafeAreaView style={s`${isDark ? 'bg-gray-800' : 'bg-gray-100'} flex-1`}>
       {/* Wrap the entire layout with KeyboardAvoidingView */}
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
