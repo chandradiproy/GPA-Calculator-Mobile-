@@ -31,7 +31,7 @@ const ResultsCard = () => {
               ]}
             >
               {/* Subject Code */}
-              <View style={s`flex-row items-center mb-1 ml-2 mt-1`}>
+              <View style={s`flex-row items-center  ml-2 mt-1`}>
                 <Book size={18} color={isDark ? '#fff' : '#333'} />
                 <Text style={[s`text-base font-md text-gray-800 ml-2`, isDark ? s`text-white` : s`text-gray-800`]}>
                   {subjectCode}
@@ -39,7 +39,7 @@ const ResultsCard = () => {
               </View>
 
               {/* Subject Title */}
-              <Text style={[s`text-lg font-semibold text-gray-700 mb-2  mt-1 ml-2`, isDark ? s`text-white` : s`text-gray-800`]}>
+              <Text style={[s`text-lg font-semibold text-gray-700 mb-2  mt-1 ml-2`, isDark ? s`text-white` : s`text-gray-800`, {fontFamily:'Quicksand-SemiBold'}]}>
                 {subjectTitle}
               </Text>
 
@@ -49,7 +49,7 @@ const ResultsCard = () => {
                   {/* Internal Marks */}
                   <View style={s`flex-row items-center`}>
                     <FileText size={16} color="#FFD700" />
-                    <Text style={s`text-white text-sm ml-1`}>INT: {marks.int}</Text>
+                    <Text style={[s`text-white text-sm ml-1`, {fontFamily:'Quicksand-Regular'}]}>INT: {marks.int}</Text>
                   </View>
 
                   {/* <View style={s`border-l border-red-500 mx-1`} /> */}
@@ -57,7 +57,7 @@ const ResultsCard = () => {
                   {/* External Marks */}
                   <View style={s`flex-row items-center`}>
                     <GraduationCap size={16} color="#FFD700" />
-                    <Text style={s`text-white text-sm ml-1`}>EXT: {marks.ext}</Text>
+                    <Text style={[s`text-white text-sm ml-1`, {fontFamily:'Quicksand-Regular'}]}>EXT: {marks.ext}</Text>
                   </View>
 
                   {/* <View style={s`border-l border-red-500 mx-1`} /> */}
@@ -65,7 +65,7 @@ const ResultsCard = () => {
                   {/* Grade */}
                   <View style={s`flex-row items-center`}>
                     <Star size={16} color="#FFD700" />
-                    <Text style={s`text-white text-sm ml-1`}>GRADE: {marks.grade}</Text>
+                    <Text style={[s`text-white text-sm ml-1`, {fontFamily:'Quicksand-Regular'}]}>GRADE: {marks.grade}</Text>
                   </View>
 
                   {/* <View style={s`border-l border-red-500 mx-1`} /> */}
@@ -73,7 +73,7 @@ const ResultsCard = () => {
                   {/* Total Marks */}
                   <View style={s`flex-row items-center`}>
                     <CheckCircle size={16} color="#FFD700" />
-                    <Text style={s`text-white text-sm ml-1`}>Total: {marks.total}</Text>
+                    <Text style={[s`text-white text-sm ml-1`, {fontFamily:'Quicksand-Regular'}]}>Total: {marks.total}</Text>
                   </View>
                 </View>
               )}

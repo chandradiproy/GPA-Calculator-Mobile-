@@ -79,12 +79,13 @@ const WelcomeCard = () => {
       <View style={[s`flex-col h-full w-48`, styles.stdDetails]}>
         <View style={s`flex-row items-center`}>
           <User size={24} color={isDark ? '#fff' : '#333'} />
-          <Text style={[s`text-3xl ml-2`, isDark ? s`text-white` : s`text-gray-800`]}>Welcome,</Text>
+          <Text style={[s`text-3xl ml-2`, isDark ? s`text-white` : s`text-gray-800`,{fontFamily: 'NunitoSans_10pt-Light'}]}>Welcome,</Text>
         </View>
         <Text
           style={[
             s`text-4xl mt-2`,
             { color: isDark ? 'rgb(230, 10, 21)' : 'rgb(197, 16, 25)' },
+            {fontFamily: 'Quicksand-SemiBold'},
           ]}
         >
           {tempReg}

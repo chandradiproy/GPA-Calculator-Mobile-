@@ -31,7 +31,7 @@ function Navbar({propStyle}) {
         styles.container,
         propStyle,
       ]}>
-      <View style={s`h-full flex-row pl-4 items-center  w-24`}>
+      <View style={s`h-full flex-row pl-3 items-center  w-24`}>
         <Text>
           <Calculator color={isDark ? 'white' : 'black'} size={30} />
         </Text>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '70%',
     height: '100%',
-    paddingEnd: 8,
+    paddingEnd: 10,
   },
 });
 

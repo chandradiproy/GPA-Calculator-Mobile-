@@ -63,7 +63,7 @@ const useStore = create((set) => ({
       Toast.show({
         type: 'error',
         text1: 'Error',
-        text2: 'Something went wrong' + err,
+        text2: 'Something went wrong! Please check your internet connection',
       });
       set({ isLoading: false });
     } finally {

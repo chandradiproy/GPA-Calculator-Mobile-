@@ -52,7 +52,7 @@ const Container = ({ propStyle }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={[s`w-full px-4 pt-6`, propStyle]}
+      style={[s`w-full px-4 pt-4`, propStyle]}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
     >
       {/* Form Container */}
@@ -72,6 +72,7 @@ const Container = ({ propStyle }) => {
             style={[
               s`flex-1 text-base p-2 rounded-lg`,
               isDark ? s` text-white` : s` text-gray-800`,
+              {fontFamily: 'NunitoSans_10pt-ExtraLight'},
             ]}
             value={regNo}
             onChangeText={val => setRegNo(val)}
@@ -85,13 +86,13 @@ const Container = ({ propStyle }) => {
           <Picker
             selectedValue={examSession}
             onValueChange={itemValue => setExamSession(itemValue)}
-            style={[s`flex-1`, isDark ? s`text-white` : s`text-gray-800`]}
+            style={[s`flex-1`, isDark ? s`text-white` : s`text-gray-800`, {fontFamily: 'NunitoSans_10pt-ExtraLight'}]}
           >
-            <Picker.Item label="Select Session..." value="" />
-            <Picker.Item label="Nov/Dec 2024" value="nov_dec_2024" />
-            <Picker.Item label="May/June 2024" value="may_june_2024" />
-            <Picker.Item label="Nov/Dec 2023" value="nov_dec_2023" />
-            <Picker.Item label="May/June 2023" value="may_june_2023" />
+            <Picker.Item label="Select Session..." value="" style={[{fontFamily: 'Oswald-Light'}]} />
+            <Picker.Item label="Nov/Dec 2024" value="nov_dec_2024" style={[{fontFamily: 'Oswald-Light'}]}/>
+            <Picker.Item label="May/June 2024" value="may_june_2024" style={[{fontFamily: 'Oswald-Light'}]}/>
+            <Picker.Item label="Nov/Dec 2023" value="nov_dec_2023" style={[{fontFamily: 'Oswald-Light'}]}/>
+            <Picker.Item label="May/June 2023" value="may_june_2023" style={[{fontFamily: 'Oswald-Light'}]}/>
           </Picker>
         </View>
 
@@ -100,7 +101,7 @@ const Container = ({ propStyle }) => {
           onPress={handleSubmit}
           disabled={isLoading}
           style={[
-            s`w-full py-4 rounded-lg mt-4`,
+            s`w-full py-3 rounded-lg mt-4`,
             isDark ? s`bg-red-700` : s`bg-gray-800`,
             isLoading && s`bg-gray-400`,
           ]}
@@ -108,6 +109,7 @@ const Container = ({ propStyle }) => {
           <Text
             style={[
               s`text-center text-lg font-semibold`,
+              {fontFamily: 'Quicksand-Semiold'},
               isDark ? s`text-white` : s`text-warmGray-100`,
             ]}
           >
