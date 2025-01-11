@@ -27,9 +27,12 @@ const useStore = create((set) => ({
 
   fetchResults: async (regNo, examSession) => {
     set({ isLoading: true });
+    const API_URL = process.env.NODE_ENV === 'production'
+      ? 'https://gpa-calculator-mobile-backend.onrender.com'
+      : 'http://192.168.1.4:3000'; // Local URL for development
   try {
       const response = await axios.get(
-        `${process.env.API_URL}/results?exam_session=${examSession}&reg_no=${regNo}`
+        `${API_URL}/results?exam_session=${examSession}&reg_no=${regNo}`
       );
 
       if (response.data.length === 0) {

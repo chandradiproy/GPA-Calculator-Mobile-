@@ -1,16 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, StyleSheet, useColorScheme} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {s} from 'react-native-wind';
+import { View, Text, StyleSheet, useColorScheme } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { s } from 'react-native-wind';
 import useStore from '../store/resultStore';
 import WelcomeCardSkeleton from '../skeletons/WelcomeCardSkeleton';
+import { User, Award } from 'lucide-react-native';
 
 const WelcomeCard = () => {
   const isDark = useColorScheme() === 'dark';
   const [gpa, setGpa] = useState(0);
-  const {tempReg, isResultsAvailable, marksDetails, subjectDetails, isLoading} = useStore();
+  const { tempReg, isResultsAvailable, marksDetails, subjectDetails, isLoading } = useStore();
+
+  // Calculate GPA
   const calculateGPA = () => {
-    const grade_points: Object = {
+    const grade_points = {
       S: 10,
       A: 9,
       B: 8,
@@ -19,8 +22,9 @@ const WelcomeCard = () => {
       E: 5,
       F: 0,
     };
-    const gradeObtained: any = [];
-    const credits: any = [];
+
+    const gradeObtained = [];
+    const credits = [];
     marksDetails.forEach(item => {
       gradeObtained.push(item.grade);
     });
@@ -29,9 +33,11 @@ const WelcomeCard = () => {
         credits.push(parseFloat(item[1]));
       }
     });
+
     let keys = Object.keys(grade_points);
     let sum = 0;
     let total = 0;
+
     for (let i = 0; i < keys.length; i++) {
       for (let j = 0; j < gradeObtained.length; j++) {
         let flag = 0;
@@ -41,42 +47,58 @@ const WelcomeCard = () => {
         }
       }
     }
+
     credits.forEach(item => {
       sum += item;
     });
+
     setGpa(parseFloat((total / sum).toFixed(2)));
-    // console.log(gpa);
   };
+
+  // Trigger GPA calculation when results are available
   useEffect(() => {
     if (isResultsAvailable) {
       calculateGPA();
     }
-  });
+  }, [isResultsAvailable]);
 
-  if (isLoading) {
-    return <WelcomeCardSkeleton />;
+  // If no results are available, return an empty view
+  if (isResultsAvailable === false) {
+    return <></>;
   }
+
   return (
     <View
       style={[
-        s`w-full bg-white mt-2 p-4 rounded-md flex-row justify-between `,
+        s`w-full bg-white mt-2 p-4 rounded-md flex-row justify-between`,
         styles.container,
-      ]}>
+        isDark ? s`bg-gray-900` : s`bg-white`,
+      ]}
+    >
       {/* Student Details Section */}
       <View style={[s`flex-col h-full w-48`, styles.stdDetails]}>
-        <Text style={s`text-3xl `}>Welcome,</Text>
-        <Text style={[s`text-4xl`, {color: isDark ? '#2475B0' : '#BB0A0A'}]}>
+        <View style={s`flex-row items-center`}>
+          <User size={24} color={isDark ? '#fff' : '#333'} />
+          <Text style={[s`text-3xl ml-2`, isDark ? s`text-white` : s`text-gray-800`]}>Welcome,</Text>
+        </View>
+        <Text
+          style={[
+            s`text-4xl mt-2`,
+            { color: isDark ? 'rgb(230, 10, 21)' : 'rgb(197, 16, 25)' },
+          ]}
+        >
           {tempReg}
         </Text>
       </View>
+
       {/* GPA Section */}
       <View
         style={[
-          s`bg-${
-            isDark ? 'gray-800' : 'gray-800'
-          } w-24 h-24 rounded-full  flex justify-center items-center`,
+          s`bg-${isDark ? 'gray-800' : 'gray-800'} w-28 h-28 rounded-full flex justify-center items-center`,
           styles.gpa,
-        ]}>
+        ]}
+      >
+        <Award size={32} color="#FFD700" style={s`justify-self-start`} />
         <View>
           <Text style={s`text-xl text-warmGray-100 text-center`}>{gpa}</Text>
           <Text style={s`text-xl text-warmGray-100 text-center`}>GPA</Text>
@@ -85,13 +107,11 @@ const WelcomeCard = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   stdDetails: {
     rowGap: 10,
   },
-  // reg_no:{
-  //   color:'#BB0A0A',
-  // },
   container: {
     elevation: 2,
     shadowColor: '#000',
